@@ -1,0 +1,22 @@
+:root {
+  --primary: #ff740d;
+  --secondary: #000000;
+  --light: #ffffff;
+  --mutual: #767676;
+}
+
+.Header {
+  color: var(--light);
+  border-radius: 5px;
+}
+.Container {
+  justify-content: center;
+}
+html {
+  background-color: var(--secondary);
+}
+
+.textField {
+  color: var(--light);
+  background-color: #ffffff;
+}

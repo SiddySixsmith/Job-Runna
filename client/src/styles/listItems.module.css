@@ -1,0 +1,24 @@
+:root {
+  --primary: #ff740d;
+  --secondary: #000000;
+  --light: #ffffff;
+  --mutual: #767676;
+}
+
+.listContainer {
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.links {
+  text-decoration: none;
+  color: var(--secondary);
+}
+.noStock {
+  margin-top: 100px;
+  color: var(--primary);
+}
+.addBtn {
+  color: var(--light);
+  background-color: var(--primary);
+}

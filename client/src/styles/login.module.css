@@ -1,0 +1,46 @@
+:root {
+  --primary: #ff740d;
+  --secondary: #000000;
+  --light: #ffffff;
+  --mutual: #767676;
+}
+
+.Container {
+  display: flex;
+  justify-content: center;
+}
+
+.Stack {
+}
+.Header {
+  margin-top: 15%;
+  color: var(--primary);
+}
+.HeaderTwo {
+  margin-top: 0%;
+  color: var(--primary);
+}
+.submitBtn {
+  background-color: var(--primary);
+}
+.btnNoBG {
+  color: var(--light);
+}
+.img {
+  margin-top: 40px;
+  width: 105%;
+  height: 100px;
+}
+
+.textfield {
+  color: var(--light);
+  background-color: var(--secondary);
+  border-bottom: 3px solid var(--light);
+  width: 80%;
+  height: 25px;
+}
+
+.label {
+  color: var(--light);
+  font-family: Arial, Helvetica, sans-serif;
+}

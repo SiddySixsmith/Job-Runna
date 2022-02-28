@@ -1,0 +1,45 @@
+:root {
+  --primary: #ff740d;
+  --secondary: #000000;
+  --light: #ffffff;
+  --mutual: #767676;
+}
+
+.Container {
+  justify-content: center;
+  position: relative;
+}
+
+.card {
+  margin: 5%;
+  text-align: start;
+}
+
+.Header {
+  color: var(--light);
+  border-radius: 5px;
+}
+
+.title {
+  color: var(--secondary);
+}
+.addBtn {
+  position: relative;
+  background-color: var(--primary);
+}
+.subtractBtn {
+  position: absolute;
+  right: 40px;
+  background-color: var(--primary);
+}
+
+.addBtn:focus {
+  background-color: var(--mutual);
+}
+.subtractBtn:after {
+  background-color: var(--mutual);
+}
+.newItemBtn {
+  color: var(--light);
+  background-color: var(--primary);
+}
