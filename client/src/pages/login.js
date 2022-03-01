@@ -1,6 +1,14 @@
 import * as React from "react";
 import { useState } from "react";
-import { Container, TextField, Stack, Button, Box } from "@mui/material";
+import {
+  Container,
+  Stack,
+  Button,
+  Box,
+  Alert,
+  AlertTitle,
+  Dialog,
+} from "@mui/material";
 import { LinkContainer } from "react-router-bootstrap";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
@@ -9,22 +17,34 @@ import logo from "../assets/images/Job-runna-logo.png";
 import styles from "../styles/login.module.css";
 
 function Login() {
-  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [errorCode, seterrorCode] = useState(false);
+
+  const [formState, setFormState] = useState({
+    email: "".toLowerCase(),
+    password: "",
+  });
   const [login, { error }] = useMutation(LOGIN_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
       const mutationResponse = await login({
-        variables: { email: formState.email, password: formState.password },
+        variables: {
+          email: formState.email.toLowerCase(),
+          password: formState.password,
+        },
       });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
     } catch (e) {
       console.log(e);
+      seterrorCode(!errorCode);
     }
   };
 
+  const handleClose = () => {
+    seterrorCode(false);
+  };
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -41,7 +61,7 @@ function Login() {
         <br />
         <br />
         <br />
-        <Stack className={styles.Stack}>
+        <Stack>
           <div>
             <label label="Email" className={styles.label}>
               Email:
@@ -74,7 +94,12 @@ function Login() {
             <br />
             <br />
           </div>
-
+          <Dialog open={errorCode} onClick={handleClose}>
+            <Alert severity="error">
+              <AlertTitle>Error</AlertTitle>
+              Email or Password is incorrect
+            </Alert>
+          </Dialog>
           <Button
             variant="contained"
             type="submit"

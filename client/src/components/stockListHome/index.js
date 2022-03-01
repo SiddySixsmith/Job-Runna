@@ -4,9 +4,7 @@ import {
   Typography,
   List,
   ListItem,
-  ListItemAvatar,
   ListItemText,
-  Divider,
   Button,
 } from "@mui/material";
 import { QUERY_STOCK } from "../../utils/queries";
@@ -41,19 +39,19 @@ const StockListHome = () => {
         className={styles.listContainer}
         sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
       >
-        {stocks.map((stock) => (
-          <Link
-            key={stock._id}
-            to={`/stocks/${stock._id}`}
-            className={styles.links}
-          >
-            <ListItem>
-              <ListItemAvatar></ListItemAvatar>
-              <ListItemText primary={stock.name} secondary={stock.quantity} />
-            </ListItem>
-            <Divider sx={{ margin: 2 }} />
-          </Link>
-        ))}
+        {stocks
+          .filter((_, index) => index < 3)
+          .map((stock) => (
+            <Link
+              key={stock._id}
+              to={`/stocks/${stock._id}`}
+              className={styles.links}
+            >
+              <ListItem className={styles.item}>
+                <ListItemText primary={stock.name} secondary={stock.quantity} />
+              </ListItem>
+            </Link>
+          ))}
       </List>
     </Container>
   );

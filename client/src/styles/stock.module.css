@@ -8,16 +8,22 @@
 .Container {
   justify-content: center;
   position: relative;
+  margin-bottom: 100px;
 }
 
 .card {
   margin: 5%;
   text-align: start;
+  text-align: center;
+  border-radius: 20px;
 }
 
 .Header {
-  color: var(--light);
-  border-radius: 5px;
+  color: var(--secondary);
+  background-color: var(--light);
+  margin-top: 5%;
+  height: 40px;
+  border-radius: 20px;
 }
 
 .title {
@@ -26,20 +32,47 @@
 .addBtn {
   position: relative;
   background-color: var(--primary);
+  border-radius: 20px;
 }
 .subtractBtn {
   position: absolute;
   right: 40px;
   background-color: var(--primary);
+  border-radius: 20px;
 }
 
-.addBtn:focus {
-  background-color: var(--mutual);
+.addBtn:hover {
+  background-color: var(--primary);
 }
-.subtractBtn:after {
-  background-color: var(--mutual);
+.subtractBtn:hover {
+  background-color: var(--primary);
 }
 .newItemBtn {
   color: var(--light);
   background-color: var(--primary);
+  border-radius: 20px;
+}
+.typgraphy {
+  margin: 10px;
+}
+.submitBtn {
+  background-color: var(--primary);
+  width: 80%;
+  border-radius: 20px;
+  margin: 20px;
+}
+.submitBtn:active {
+  background-color: var(--primary);
+}
+.submitBtn:focus {
+  background-color: var(--primary);
+  color: var(--light);
+}
+.submitBtn::after {
+  background-color: var(--primary);
+  color: var(--light);
+}
+.submitBtn:hover {
+  background-color: var(--primary);
+  color: var(--light);
 }

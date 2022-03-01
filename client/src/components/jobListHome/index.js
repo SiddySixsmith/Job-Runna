@@ -6,12 +6,10 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
-  Divider,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { QUERY_JOB } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
-import { LinkContainer } from "react-router-bootstrap";
 import styles from "../../styles/listItems.module.css";
 
 const JobListHome = () => {
@@ -33,20 +31,23 @@ const JobListHome = () => {
         className={styles.listContainer}
         sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
       >
-        {jobs.map((job) => (
-          <Link key={job._id} to={`/jobs/${job._id}`} className={styles.links}>
-            <>
-              <ListItem>
+        {jobs
+          .filter((_, index) => index < 3)
+          .map((job) => (
+            <Link
+              key={job._id}
+              to={`/jobs/${job._id}`}
+              className={styles.links}
+            >
+              <ListItem className={styles.item}>
                 <ListItemAvatar></ListItemAvatar>
                 <ListItemText
                   primary={job.siteAddress}
                   secondary={job.builderName}
                 />
               </ListItem>
-              <Divider sx={{ margin: 2 }} />
-            </>
-          </Link>
-        ))}
+            </Link>
+          ))}
       </List>
     </Container>
   );

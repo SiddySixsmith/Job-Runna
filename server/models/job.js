@@ -33,7 +33,7 @@ const jobSchema = new Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now,
+    default: new Date(),
   },
   meterage: {
     type: String,

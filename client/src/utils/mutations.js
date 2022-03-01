@@ -126,7 +126,6 @@ export const DELETE_JOB = gql`
   mutation Mutation($id: ID) {
     deleteJob(_id: $id) {
       _id
-      siteAddress
     }
   }
 `;
@@ -169,7 +168,7 @@ export const UPDATE_STOCK = gql`
   }
 `;
 
-export const REMOVE_STOCK = gql`
+export const DELETE_STOCK = gql`
   mutation DeleteStock($id: ID) {
     deleteStock(_id: $id) {
       _id

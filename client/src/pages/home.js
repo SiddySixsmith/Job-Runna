@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <Container className={styles.Container}>
       <h1 className={styles.Header}>Welcome, {user.firstName} </h1>
-      <div>
+      <div className={styles.seperator}>
         <JobListHome />
       </div>
       <div>

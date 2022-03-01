@@ -5,20 +5,24 @@ import Auth from "../utils/auth";
 import {
   Container,
   Stack,
-  TextField,
   Button,
   Box,
   Divider,
+  Alert,
+  AlertTitle,
+  Dialog,
 } from "@mui/material/";
 import { LinkContainer } from "react-router-bootstrap";
 import logo from "../assets/images/Job-runna-logo.png";
 import styles from "../styles/login.module.css";
 
 const Signup = () => {
+  const [errorCode, seterrorCode] = useState(false);
+
   const [formState, setFormState] = useState({
     firstName: "",
     lastName: "",
-    email: "",
+    email: "".toLowerCase(),
     password: "",
   });
 
@@ -35,32 +39,25 @@ const Signup = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
-    const mutationResponse = await addUser({
-      variables: {
-        email: formState.email,
-        password: formState.password,
-        firstName: formState.firstName,
-        lastName: formState.lastName,
-      },
-    });
-    const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+    try {
+      const mutationResponse = await addUser({
+        variables: {
+          email: formState.email.toLowerCase(),
+          password: formState.password,
+          firstName: formState.firstName,
+          lastName: formState.lastName,
+        },
+      });
+      const token = mutationResponse.data.addUser.token;
+      Auth.login(token);
+    } catch (e) {
+      console.log(e);
+      seterrorCode(!errorCode);
+    }
   };
-  // const HandleSubmitBtn = () => {
-  //   if (data) {
-  //     return <Alert severity="success">Signup Successful</Alert>;
-  //   }
-  //   if (error) {
-  //     return (
-  //       <Alert severity="error">
-  //         There was a problem signing you up. Please check you info {error}
-  //       </Alert>
-  //     );
-  //   }
-  //   return null;
-  // };
-
+  const handleClose = () => {
+    seterrorCode(false);
+  };
   return (
     <Container className={styles.Container}>
       <Box component="form" noValidate onSubmit={handleFormSubmit}>
@@ -121,6 +118,13 @@ const Signup = () => {
               onChange={handleChange}
             />
           </div>
+          <Dialog open={errorCode} onClick={handleClose}>
+            <Alert severity="error">
+              <AlertTitle>Error</AlertTitle>
+              Oops, something wrong, please check fields are corect and try
+              again
+            </Alert>
+          </Dialog>
           <Button
             variant="contained"
             type="submit"

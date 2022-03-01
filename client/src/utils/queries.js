@@ -9,6 +9,8 @@ export const QUERY_JOB = gql`
       builderName
       contact
       contactNumber
+      startDate
+      endDate
       createdAt
       meterage
     }

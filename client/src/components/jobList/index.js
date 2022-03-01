@@ -5,10 +5,9 @@ import {
   Card,
   CardContent,
   Button,
-  CardActions,
 } from "@mui/material";
 import ResponsiveDialogJob from "../jobForm";
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { QUERY_JOB } from "../../utils/queries";
 import styles from "../../styles/stock.module.css";
 import { LinkContainer } from "react-router-bootstrap";
@@ -58,12 +57,11 @@ const JobList = () => {
                 {job.builderName}
               </Typography>
               <Typography variant="body1">
-                Conact Number: <br />
-                {job.contactNumber}
-                <br />
-                Meterage: {job.meterage}
+                Meterage: {job.meterage} sqm
                 <br />
                 Start Date: {job.startDate}
+                <br />
+                Start Date: {job.endDate}
               </Typography>
             </CardContent>
           </Card>

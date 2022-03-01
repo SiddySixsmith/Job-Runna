@@ -21,7 +21,7 @@ const StockList = () => {
 
   if (!stocks.length) {
     return (
-      <Container>
+      <Container className={styles.Container}>
         <Typography variant="h3">No Stocks avaliable</Typography>
         <Button
           variant="outlined"

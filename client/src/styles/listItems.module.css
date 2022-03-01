@@ -6,8 +6,8 @@
 }
 
 .listContainer {
-  border-radius: 5px;
-  margin-bottom: 15px;
+  border-radius: 20px;
+  padding: 0%;
 }
 
 .links {
@@ -21,4 +21,9 @@
 .addBtn {
   color: var(--light);
   background-color: var(--primary);
+}
+
+.item {
+  border-bottom: 3px solid var(--primary);
+  border-radius: 20px;
 }
