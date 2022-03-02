@@ -18,7 +18,7 @@ import SingleJob from "./components/singleJob";
 import SingleStock from "./components/singleStock";
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  uri: "https://job-runna.herokuapp.com/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
