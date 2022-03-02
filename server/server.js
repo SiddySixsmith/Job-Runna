@@ -15,6 +15,7 @@ async function startServer() {
     typeDefs,
     resolvers,
     context: authMiddleware,
+    cors: true
   });
   await apolloServer.start();
   apolloServer.applyMiddleware({ app });
