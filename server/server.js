@@ -14,9 +14,6 @@ async function startServer() {
   apolloServer = new ApolloServer({
     typeDefs,
     resolvers,
-    fetchOptions: {
-    mode: 'no-cors',
-  },
     context: authMiddleware,
   });
   await apolloServer.start();
