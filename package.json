@@ -19,6 +19,7 @@
   "dependencies": {
     "@mui/core": "^5.0.0-alpha.54",
     "@mui/styles": "^5.4.2",
+    "cors": "^2.8.5",
     "nodemailer": "^6.7.2"
   }
 }
