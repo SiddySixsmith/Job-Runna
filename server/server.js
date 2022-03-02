@@ -10,21 +10,6 @@ const app = express();
 
 let apolloServer = null;
 
-app.use(
-  "/graphql",
-  bodyParser.json(),
-  graphqlExpress({
-    schema,
-    tracing: true,
-    cacheControl: true,
-    context: {
-      secrets: {
-        TM_API_KEY: process.env.TM_API_KEY
-      }
-    }
-  })
-);
-
 async function startServer() {
   apolloServer = new ApolloServer({
     typeDefs,
