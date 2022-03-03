@@ -9,6 +9,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { useMutation } from "@apollo/client";
 import { ADD_STOCK } from "../../utils/mutations";
+import styles from "../../styles/form.module.css"
 
 const ResponsiveDialogStock = (props) => {
   const [formState, setFormState] = useState({
@@ -64,13 +65,13 @@ const ResponsiveDialogStock = (props) => {
       onClose={handleClose}
       aria-labelledby="responsive-dialog-title"
     >
-      <DialogTitle id="responsive-dialog-title">
-        {"Add a new Stock item"}
+      <DialogTitle id="responsive-dialog-title" className={styles.header}>
+        {"Add new Stock item"}
       </DialogTitle>
       <Box component="form" noValidate onSubmit={handleFormSubmit}>
         <DialogContent>
           <TextField
-            className="textField"
+            className={styles.content}
             variant="standard"
             id="name"
             label="Name"
@@ -82,7 +83,7 @@ const ResponsiveDialogStock = (props) => {
           <br />
           <br />
           <TextField
-            className="textField"
+            className={styles.content}
             variant="standard"
             id="stockType"
             label="Stock Type"
@@ -94,7 +95,7 @@ const ResponsiveDialogStock = (props) => {
           <br />
           <br />
           <TextField
-            className="textField"
+            className={styles.content}
             variant="standard"
             id="number"
             label="Quantity"
@@ -107,7 +108,7 @@ const ResponsiveDialogStock = (props) => {
           <br />
           <br />
           <TextField
-            className="textField"
+            className={styles.content}
             variant="standard"
             id="size"
             label="Size"
@@ -119,7 +120,7 @@ const ResponsiveDialogStock = (props) => {
           <br />
           <br />
           <TextField
-            className="textField"
+            className={styles.content}
             variant="standard"
             id="grit"
             label="Grit"
@@ -130,10 +131,10 @@ const ResponsiveDialogStock = (props) => {
           />
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose}>
+          <Button autoFocus onClick={handleClose} className={styles.submitBtn}>
             Cancel
           </Button>
-          <Button type="submit" autoFocus>
+          <Button type="submit" autoFocus className={styles.submitBtn}>
             Submit
           </Button>
         </DialogActions>

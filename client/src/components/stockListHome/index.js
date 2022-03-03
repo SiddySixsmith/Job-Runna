@@ -25,7 +25,7 @@ const StockListHome = () => {
         <Button
           variant="outlined"
           onClick={() => setOpen(true)}
-          className={styles.addBtn}
+          className={styles.newItemBtn}
         >
           Add New Item
         </Button>

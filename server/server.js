@@ -7,7 +7,7 @@ const db = require("./config/connection");
 const cors = require('cors') 
 
 
-const PORT = process.env.PORT ;
+const PORT = process.env.PORT || 3007;
 const app = express();
 
 let apolloServer = null;

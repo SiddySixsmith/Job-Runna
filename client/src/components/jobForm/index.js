@@ -9,8 +9,22 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { ADD_JOB } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
+import DatePicker from "../dataPicker";
+import moment from "moment"
+import styles from "../../styles/form.module.css"
+
 
 const ResponsiveDialogJob = (props) => {
+
+  const handleStartDate = (startDateValue) =>{
+    startDateValue = moment(startDateValue).format("DD/MM/yyyy");
+    setFormState({...formState, startDate: startDateValue,})
+  }
+  const handleEndDate = (endDateValue) =>{
+    endDateValue = moment(endDateValue).format("DD/MM/yyyy");
+    setFormState({...formState, endDate: endDateValue,})
+  }
+
   const [formState, setFormState] = useState({
     siteAddress: "",
     jobDescription: "",
@@ -46,9 +60,11 @@ const ResponsiveDialogJob = (props) => {
       console.log(e);
     }
   };
+  
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(event)
     setFormState({
       ...formState,
       [name]: value,
@@ -63,20 +79,22 @@ const ResponsiveDialogJob = (props) => {
   };
 
   return (
+    
+  
     <Dialog
       fullScreen={fullScreen}
       open={open}
       onClose={handleClose}
       aria-labelledby="responsive-dialog-title"
     >
-      <DialogTitle id="responsive-dialog-title">
+      <DialogTitle id="responsive-dialog-title" className={styles.header}>
         {"Add a new job item"}
       </DialogTitle>
-      <Box component="form" noValidate onSubmit={handleFormSubmit}>
-        <DialogContent>
+      <Box component="form" noValidate onSubmit={handleFormSubmit} >
+        <DialogContent className={styles.content}>
           <TextField
             variant="standard"
-            className="textField"
+            className={styles.content}
             id="siteAddress"
             label="Site Address"
             name="siteAddress"
@@ -88,7 +106,7 @@ const ResponsiveDialogJob = (props) => {
           <br />
           <TextField
             variant="standard"
-            className="textField"
+            className={styles.content}
             id="jobDescription"
             label="Job Description"
             name="jobDescription"
@@ -100,7 +118,7 @@ const ResponsiveDialogJob = (props) => {
           <br />
           <TextField
             variant="standard"
-            className="textField"
+            className={styles.content}
             id="builderName"
             label="Builders Name"
             name="builderName"
@@ -112,7 +130,7 @@ const ResponsiveDialogJob = (props) => {
           <br />
           <TextField
             variant="standard"
-            className="textField"
+            className={styles.content}
             id="contact"
             label="Contact"
             name="contact"
@@ -124,7 +142,7 @@ const ResponsiveDialogJob = (props) => {
           <br />
           <TextField
             variant="standard"
-            className="textField"
+            className={styles.content}
             id="contactNumber"
             label="Contact Number"
             name="contactNumber"
@@ -134,33 +152,15 @@ const ResponsiveDialogJob = (props) => {
           />
           <br />
           <br />
-          <TextField
-            variant="standard"
-            className="textField"
-            id="startDate"
-            label="Start Date"
-            name="startDate"
-            autoFocus
-            required
-            onChange={handleChange}
-          />
+          <DatePicker onValue={handleStartDate}  />
+          <br />
+          <br />
+          <DatePicker onValue={handleEndDate}  />
           <br />
           <br />
           <TextField
             variant="standard"
-            className="textField"
-            id="endDate"
-            label="End Date"
-            name="endDate"
-            autoFocus
-            required
-            onChange={handleChange}
-          />
-          <br />
-          <br />
-          <TextField
-            variant="standard"
-            className="textField"
+            className={styles.content}
             id="meterage"
             label="Meterage"
             name="meterage"
@@ -170,10 +170,10 @@ const ResponsiveDialogJob = (props) => {
           />
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose}>
+          <Button autoFocus onClick={handleClose} className={styles.submitBtn}>
             Cancel
           </Button>
-          <Button type="submit" autoFocus>
+          <Button type="submit" autoFocus className={styles.submitBtn}>
             Submit
           </Button>
         </DialogActions>

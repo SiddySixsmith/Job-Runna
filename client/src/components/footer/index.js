@@ -1,5 +1,5 @@
 import React from "react";
-import { BottomNavigation, BottomNavigationAction, Link } from "@mui/material/";
+import { BottomNavigation, BottomNavigationAction } from "@mui/material/";
 import HomeIcon from "@mui/icons-material/Home";
 import OpacityIcon from "@mui/icons-material/Opacity";
 import WorkIcon from "@mui/icons-material/Work";
@@ -14,9 +14,10 @@ function Footer() {
     if (Auth.loggedIn) {
       return (
         <BottomNavigationAction
+        sx={{color:"white"}}
           label="Logout"
           onClick={Auth.logout}
-          icon={<LogoutIcon />}
+          icon={<LogoutIcon  sx={{color:"white", fontSize: 40}}/>}
         />
       );
     }
@@ -24,7 +25,7 @@ function Footer() {
   return (
     <BottomNavigation
       showLabels
-      sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+      sx={{ position: "fixed", bottom: 0, left: 0, right: 0, bgcolor: "black" }}
       elevation={3}
       value={value}
       onChange={(event, newValue) => {
@@ -32,13 +33,13 @@ function Footer() {
       }}
     >
       <LinkContainer to={"/home"}>
-        <BottomNavigationAction label="Home" icon={<HomeIcon />} />
+        <BottomNavigationAction  sx={{color:"white"}} label="Home" icon={<HomeIcon  sx={{color:"white", fontSize: 40}}/>} />
       </LinkContainer>
       <LinkContainer to={"/stock"}>
-        <BottomNavigationAction label="Stock" icon={<OpacityIcon />} />
+        <BottomNavigationAction sx={{color:"white"}} label="Stock" icon={<OpacityIcon  sx={{color:"white", fontSize: 40}}/>} />
       </LinkContainer>
       <LinkContainer to={"/jobs"}>
-        <BottomNavigationAction label="Jobs" icon={<WorkIcon />} />
+        <BottomNavigationAction  sx={{color:"white"}} label="Jobs" icon={<WorkIcon  sx={{color:"white", fontSize: 40}}/>} />
       </LinkContainer>
       <HandleLogChange />
     </BottomNavigation>

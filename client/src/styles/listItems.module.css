@@ -27,3 +27,8 @@
   border-bottom: 3px solid var(--primary);
   border-radius: 20px;
 }
+.newItemBtn {
+  color: var(--light);
+  background-color: var(--primary);
+  border-radius: 20px;
+}

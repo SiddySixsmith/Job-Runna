@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Container,
   Typography,
@@ -6,23 +6,33 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
+  Button
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { QUERY_JOB } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
 import styles from "../../styles/listItems.module.css";
+import ResponsiveDialogJob from "../jobForm";
+
 
 const JobListHome = () => {
+  const [open, setOpen] = useState(false);
+
   const { loading, data } = useQuery(QUERY_JOB);
   const jobs = data?.Job || [];
   if (!jobs.length) {
     return (
-      <Container className={styles.noStock}>
-        <Typography variant="h5">
-          No jobs avaliable
-          {/* <Link to={"/add-job"}>Add Job</Link> */}
-        </Typography>
-      </Container>
+      <Container>
+      <Typography variant="h5" className={styles.noStock}>No Jobs avaliable</Typography>
+      <Button
+        variant="outlined"
+        onClick={() => setOpen(true)}
+        className={styles.newItemBtn}
+      >
+        Add New Job
+      </Button>
+      <ResponsiveDialogJob open={open} setOpen={setOpen}></ResponsiveDialogJob>
+    </Container>
     );
   }
   return (

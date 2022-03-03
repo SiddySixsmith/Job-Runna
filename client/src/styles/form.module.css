@@ -1,0 +1,27 @@
+:root {
+    --primary: #ff740d;
+    --secondary: #000000;
+    --light: #ffffff;
+    --mutual: #767676;
+  }
+
+  
+  .header{
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10%;
+      font-size: 40px;
+  }
+
+  .content{
+      width: 80%;
+      margin-left: 6%;
+      
+  }
+  .submitBtn {
+    background-color: var(--secondary);
+    border-radius: 20px;
+    box-shadow: 3px 3px 15px var(--secondary);
+    color: var(--light);
+    margin-top: 10%;
+  }

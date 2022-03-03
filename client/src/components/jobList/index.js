@@ -19,8 +19,11 @@ const JobList = () => {
   const jobs = data?.Job || [];
 
   if (!jobs.length) {
-    <Container>
-      <Typography variant="h3">No Jobs avaliable</Typography>
+    return (<Container>
+      <Typography variant="h4" className={styles.Header}>No Jobs avaliable</Typography>
+      <br/>
+      <br/>
+      <br/>
       <Button
         variant="outlined"
         onClick={() => setOpen(true)}
@@ -29,7 +32,8 @@ const JobList = () => {
         Add New Job
       </Button>
       <ResponsiveDialogJob open={open} setOpen={setOpen}></ResponsiveDialogJob>
-    </Container>;
+    </Container>
+    );
   }
   return (
     <Container className={styles.Container}>
