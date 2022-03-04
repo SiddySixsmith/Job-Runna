@@ -3,23 +3,24 @@
   "name": "Job and stock controller",
   "icons": [
     {
-      "src": "job-runna-logo-icon.ico",
+      "src": "job-runna-logo-icon.jpg",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "job-runna-logo-icon.png",
+      "src": "job-runna-logo-icon.jpg",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "job-runna-logo-icon.png",
+      "src": "job-runna-logo-icon.jpg",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#000000",
+  "prefer_related_applications": true,
   "background_color": "#ffffff"
 }

@@ -10,20 +10,18 @@ import { useTheme } from "@mui/material/styles";
 import { ADD_JOB } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
 import DatePicker from "../dataPicker";
-import moment from "moment"
-import styles from "../../styles/form.module.css"
-
+import moment from "moment";
+import styles from "../../styles/form.module.css";
 
 const ResponsiveDialogJob = (props) => {
-
-  const handleStartDate = (startDateValue) =>{
+  const handleStartDate = (startDateValue) => {
     startDateValue = moment(startDateValue).format("DD/MM/yyyy");
-    setFormState({...formState, startDate: startDateValue,})
-  }
-  const handleEndDate = (endDateValue) =>{
+    setFormState({ ...formState, startDate: startDateValue });
+  };
+  const handleEndDate = (endDateValue) => {
     endDateValue = moment(endDateValue).format("DD/MM/yyyy");
-    setFormState({...formState, endDate: endDateValue,})
-  }
+    setFormState({ ...formState, endDate: endDateValue });
+  };
 
   const [formState, setFormState] = useState({
     siteAddress: "",
@@ -60,11 +58,10 @@ const ResponsiveDialogJob = (props) => {
       console.log(e);
     }
   };
-  
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(event)
+    console.log(event);
     setFormState({
       ...formState,
       [name]: value,
@@ -79,8 +76,6 @@ const ResponsiveDialogJob = (props) => {
   };
 
   return (
-    
-  
     <Dialog
       fullScreen={fullScreen}
       open={open}
@@ -90,7 +85,7 @@ const ResponsiveDialogJob = (props) => {
       <DialogTitle id="responsive-dialog-title" className={styles.header}>
         {"Add a new job item"}
       </DialogTitle>
-      <Box component="form" noValidate onSubmit={handleFormSubmit} >
+      <Box component="form" noValidate onSubmit={handleFormSubmit}>
         <DialogContent className={styles.content}>
           <TextField
             variant="standard"
@@ -102,8 +97,7 @@ const ResponsiveDialogJob = (props) => {
             required
             onChange={handleChange}
           />
-          <br />
-          <br />
+
           <TextField
             variant="standard"
             className={styles.content}
@@ -114,8 +108,7 @@ const ResponsiveDialogJob = (props) => {
             required
             onChange={handleChange}
           />
-          <br />
-          <br />
+
           <TextField
             variant="standard"
             className={styles.content}
@@ -126,8 +119,7 @@ const ResponsiveDialogJob = (props) => {
             required
             onChange={handleChange}
           />
-          <br />
-          <br />
+
           <TextField
             variant="standard"
             className={styles.content}
@@ -138,8 +130,7 @@ const ResponsiveDialogJob = (props) => {
             required
             onChange={handleChange}
           />
-          <br />
-          <br />
+
           <TextField
             variant="standard"
             className={styles.content}
@@ -150,14 +141,11 @@ const ResponsiveDialogJob = (props) => {
             required
             onChange={handleChange}
           />
-          <br />
-          <br />
-          <DatePicker onValue={handleStartDate}  />
-          <br />
-          <br />
-          <DatePicker onValue={handleEndDate}  />
-          <br />
-          <br />
+
+          <DatePicker onValue={handleStartDate} />
+
+          <DatePicker onValue={handleEndDate} />
+
           <TextField
             variant="standard"
             className={styles.content}

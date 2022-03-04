@@ -10,18 +10,6 @@ import Auth from "../../utils/auth";
 function Footer() {
   const [value, setValue] = React.useState(0);
 
-  const HandleLogChange = () => {
-    if (Auth.loggedIn) {
-      return (
-        <BottomNavigationAction
-        sx={{color:"white"}}
-          label="Logout"
-          onClick={Auth.logout}
-          icon={<LogoutIcon  sx={{color:"white", fontSize: 40}}/>}
-        />
-      );
-    }
-  };
   return (
     <BottomNavigation
       showLabels
@@ -33,15 +21,32 @@ function Footer() {
       }}
     >
       <LinkContainer to={"/home"}>
-        <BottomNavigationAction  sx={{color:"white"}} label="Home" icon={<HomeIcon  sx={{color:"white", fontSize: 40}}/>} />
+        <BottomNavigationAction
+          sx={{ color: "white" }}
+          label="Home"
+          icon={<HomeIcon sx={{ color: "white", fontSize: 40 }} />}
+        />
       </LinkContainer>
       <LinkContainer to={"/stock"}>
-        <BottomNavigationAction sx={{color:"white"}} label="Stock" icon={<OpacityIcon  sx={{color:"white", fontSize: 40}}/>} />
+        <BottomNavigationAction
+          sx={{ color: "white" }}
+          label="Stock"
+          icon={<OpacityIcon sx={{ color: "white", fontSize: 40 }} />}
+        />
       </LinkContainer>
       <LinkContainer to={"/jobs"}>
-        <BottomNavigationAction  sx={{color:"white"}} label="Jobs" icon={<WorkIcon  sx={{color:"white", fontSize: 40}}/>} />
+        <BottomNavigationAction
+          sx={{ color: "white" }}
+          label="Jobs"
+          icon={<WorkIcon sx={{ color: "white", fontSize: 40 }} />}
+        />
       </LinkContainer>
-      <HandleLogChange />
+      <BottomNavigationAction
+        sx={{ color: "white" }}
+        label="Logout"
+        onClick={Auth.logout}
+        icon={<LogoutIcon sx={{ color: "white", fontSize: 40 }} />}
+      />
     </BottomNavigation>
   );
 }

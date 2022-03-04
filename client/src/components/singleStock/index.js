@@ -17,7 +17,7 @@ import { useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_STOCK_BY_ID } from "../../utils/queries";
 import styles from "../../styles/stock.module.css";
-import { UPDATE_STOCK, DELETE_STOCK } from "../../utils/mutations";
+import { DELETE_STOCK } from "../../utils/mutations";
 import { LinkContainer } from "react-router-bootstrap";
 
 const Transition = React.forwardRef(function Transition(props, ref) {

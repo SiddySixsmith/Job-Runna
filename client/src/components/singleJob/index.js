@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
   Container,
   Typography,
@@ -15,11 +15,9 @@ import { DELETE_JOB } from "../../utils/mutations";
 import { LinkContainer } from "react-router-bootstrap";
 import ResponsiveDialogJob from "../jobForm";
 
-
 const SingleJob = () => {
   const { _id } = useParams();
   const [open, setOpen] = useState(false);
-
 
   const { loading, data: queryData } = useQuery(QUERY_JOB_BY_ID, {
     variables: { id: _id },
@@ -79,10 +77,6 @@ const SingleJob = () => {
                   Start Date: <br />
                   {job.startDate}
                 </Typography>
-                {/* <Typography variant="body1" className={styles.typgraphy}>
-                  Created Date: <br />
-                  {job.createdAt}
-                </Typography> */}
               </CardContent>
             </Card>
             <LinkContainer to={"/jobs"}>
@@ -96,10 +90,17 @@ const SingleJob = () => {
             </LinkContainer>
             <br />
             <br />
-            <Button variant="contained"  onClick={() => setOpen(true)} className={styles.submitBtn}>
+            <Button
+              variant="contained"
+              onClick={() => setOpen(true)}
+              className={styles.submitBtn}
+            >
               update
             </Button>
-            <ResponsiveDialogJob open={open} setOpen={setOpen}></ResponsiveDialogJob>
+            <ResponsiveDialogJob
+              open={open}
+              setOpen={setOpen}
+            ></ResponsiveDialogJob>
           </Box>
         </>
       )}

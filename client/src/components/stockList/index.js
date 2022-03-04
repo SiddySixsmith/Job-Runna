@@ -5,7 +5,6 @@ import {
   Card,
   CardContent,
   Button,
-  CardActions,
 } from "@mui/material";
 import { LinkContainer } from "react-router-bootstrap";
 import ResponsiveDialogStock from "../stockForm";
@@ -22,10 +21,12 @@ const StockList = () => {
   if (!stocks.length) {
     return (
       <Container>
-        <Typography variant="h4" className={styles.Header}>No Stocks avaliable</Typography>
-        <br/>
-        <br/>
-        <br/>
+        <Typography variant="h4" className={styles.Header}>
+          No Stocks avaliable
+        </Typography>
+        <br />
+        <br />
+        <br />
         <Button
           variant="outlined"
           onClick={() => setOpen(true)}
@@ -52,7 +53,8 @@ const StockList = () => {
       </Button>
       <ResponsiveDialogStock
         open={open}
-        setOpen={setOpen}></ResponsiveDialogStock>
+        setOpen={setOpen}
+      ></ResponsiveDialogStock>
       {stocks.map((stock) => (
         <LinkContainer key={stock._id} to={`/stocks/${stock._id}`}>
           <Card key={stock._id} className={styles.card}>
