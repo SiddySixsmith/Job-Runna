@@ -9,7 +9,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { useMutation } from "@apollo/client";
 import { ADD_STOCK } from "../../utils/mutations";
-import styles from "../../styles/form.module.css"
+import styles from "../../styles/form.module.css";
 
 const ResponsiveDialogStock = (props) => {
   const [formState, setFormState] = useState({
@@ -33,7 +33,6 @@ const ResponsiveDialogStock = (props) => {
           grit: formState.grit,
         },
       });
-      console.log(data);
       setOpen(false);
 
       window.location.reload();

@@ -19,9 +19,9 @@ import SingleStock from "./components/singleStock";
 
 const httpLink = createHttpLink({
   // production connection
-  // uri: "https://job-runna.herokuapp.com/graphql",
+  uri: "https://job-runna.herokuapp.com/graphql",
   // Development connection
-  uri: "http://localhost:3007/graphql",
+  // uri: "http://localhost:3007/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {

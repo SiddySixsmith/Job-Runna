@@ -31,7 +31,6 @@ const SingleJob = () => {
       const { data } = await deleteJob({
         variables: { id },
       });
-      console.log(data);
       window.location.reload();
     } catch (err) {
       console.log(err);

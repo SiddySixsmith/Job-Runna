@@ -42,7 +42,6 @@ const SingleStock = () => {
       const { data } = await deleteStock({
         variables: { id },
       });
-      console.log(data);
       window.location.reload();
     } catch (err) {
       console.log(err);
