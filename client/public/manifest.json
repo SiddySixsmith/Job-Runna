@@ -1,11 +1,11 @@
 {
     "theme_color": "#ff740d",
+    "prefer_related_applications": true,
     "background_color": "#000",
-    "display": "browser",
-    "scope": "/",
+    "display": "standalone",
     "start_url": "/",
     "name": "Job Runna",
-    "short_name": "Jopb Runna",
+    "short_name": "Job Runna",
     "description": "Job organiser",
     "icons": [
         {
