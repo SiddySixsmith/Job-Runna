@@ -46,17 +46,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 function App() {
-  if (!Auth.loggedIn) {
-    return (
-      <ApolloProvider client={client}>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Login />} />
-          </Routes>
-        </Router>
-      </ApolloProvider>
-    );
-  }
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -64,6 +53,7 @@ function App() {
           <Routes>
             <Route path="/signup" element={<Signup />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Login />} />
             <Route path="/jobs" element={<JobList />} />
             <Route path="/stock" element={<StockList />} />
             <Route path="/jobs/:_id" element={<SingleJob />} />
