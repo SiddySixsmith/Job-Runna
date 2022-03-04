@@ -34,12 +34,6 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-const requireAuth = (nextState, replace) => {
-  if (Auth.loggedIn())
-    // pseudocode - SYNCHRONOUS function (cannot be async without extra callback parameter to this function)
-    replace("/login");
-};
-
 const HandleNav = () => {
   if (Auth.loggedIn()) {
     return <Footer />;
@@ -52,30 +46,28 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 function App() {
+  if (!Auth.loggedIn) {
+    return (
+      <ApolloProvider client={client}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Login />} />
+          </Routes>
+        </Router>
+      </ApolloProvider>
+    );
+  }
   return (
     <ApolloProvider client={client}>
       <Router>
         <div className="App">
           <Routes>
             <Route path="/signup" element={<Signup />} />
-            <Route path="/home" element={<Home />} onEnter={requireAuth} />
-            <Route path="/" element={<Login />} />
-            <Route path="/jobs" element={<JobList />} onEnter={requireAuth} />
-            <Route
-              path="/stock"
-              element={<StockList />}
-              onEnter={requireAuth}
-            />
-            <Route
-              path="/jobs/:_id"
-              element={<SingleJob />}
-              onEnter={requireAuth}
-            />
-            <Route
-              path="/stocks/:_id"
-              element={<SingleStock />}
-              onEnter={requireAuth}
-            />
+            <Route path="/home" element={<Home />} />
+            <Route path="/jobs" element={<JobList />} />
+            <Route path="/stock" element={<StockList />} />
+            <Route path="/jobs/:_id" element={<SingleJob />} />
+            <Route path="/stocks/:_id" element={<SingleStock />} />
           </Routes>
         </div>
         <HandleNav />
