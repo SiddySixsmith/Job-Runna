@@ -1,4 +1,8 @@
+// eslint-disable-next-line no-undef
+importScripts("https://progressier.com/client/sw.js?id=yRsm5UICLSzqzoY8TyNy");
+
 /* eslint-disable no-restricted-globals */
+
 var CACHE_NAME = "job-runna";
 var urlsToCache = ["/", "/completed"];
 
