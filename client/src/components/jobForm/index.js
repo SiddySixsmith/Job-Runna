@@ -50,7 +50,6 @@ const ResponsiveDialogJob = (props) => {
           meterage: formState.meterage,
         },
       });
-      console.log(data);
       setOpen(false);
 
       window.location.reload();
@@ -61,7 +60,6 @@ const ResponsiveDialogJob = (props) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(event);
     setFormState({
       ...formState,
       [name]: value,

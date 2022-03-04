@@ -40,9 +40,10 @@ if (process.env.NODE_ENV === "production") {
 
 db.once("open", () => {
   app.listen(PORT, () => {
-    console.log(`API server live: ${PORT}!`);
-    console.log(
-      `GraphQL live: https://studio.apollographql.com/sandbox/explorer`
+    // development only
+    // console.log(`API server live: ${PORT}!`);
+    // console.log(
+    //   `GraphQL live: https://studio.apollographql.com/sandbox/explorer`
     );
   });
 });
