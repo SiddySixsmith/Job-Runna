@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
   Container,
   Typography,
@@ -6,14 +6,13 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
-  Button
+  Button,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { QUERY_JOB } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
 import styles from "../../styles/listItems.module.css";
 import ResponsiveDialogJob from "../jobForm";
-
 
 const JobListHome = () => {
   const [open, setOpen] = useState(false);
@@ -23,16 +22,21 @@ const JobListHome = () => {
   if (!jobs.length) {
     return (
       <Container>
-      <Typography variant="h5" className={styles.noStock}>No Jobs avaliable</Typography>
-      <Button
-        variant="outlined"
-        onClick={() => setOpen(true)}
-        className={styles.newItemBtn}
-      >
-        Add New Job
-      </Button>
-      <ResponsiveDialogJob open={open} setOpen={setOpen}></ResponsiveDialogJob>
-    </Container>
+        <Typography variant="h5" className={styles.noStock}>
+          No Jobs avaliable
+        </Typography>
+        <Button
+          variant="outlined"
+          onClick={() => setOpen(true)}
+          className={styles.newItemBtn}
+        >
+          Add New Job
+        </Button>
+        <ResponsiveDialogJob
+          open={open}
+          setOpen={setOpen}
+        ></ResponsiveDialogJob>
+      </Container>
     );
   }
   return (
@@ -42,7 +46,7 @@ const JobListHome = () => {
         sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
       >
         {jobs
-          .filter((_, index) => index < 3)
+          .filter((_, index) => index < -3)
           .map((job) => (
             <Link
               key={job._id}

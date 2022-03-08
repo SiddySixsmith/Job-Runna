@@ -19,20 +19,26 @@ const JobList = () => {
   const jobs = data?.Job || [];
 
   if (!jobs.length) {
-    return (<Container>
-      <Typography variant="h4" className={styles.Header}>No Jobs avaliable</Typography>
-      <br/>
-      <br/>
-      <br/>
-      <Button
-        variant="outlined"
-        onClick={() => setOpen(true)}
-        className={styles.newItemBtn}
-      >
-        Add New Job
-      </Button>
-      <ResponsiveDialogJob open={open} setOpen={setOpen}></ResponsiveDialogJob>
-    </Container>
+    return (
+      <Container>
+        <Typography variant="h4" className={styles.Header}>
+          No Jobs avaliable
+        </Typography>
+        <br />
+        <br />
+        <br />
+        <Button
+          variant="outlined"
+          onClick={() => setOpen(true)}
+          className={styles.newItemBtn}
+        >
+          Add New Job
+        </Button>
+        <ResponsiveDialogJob
+          open={open}
+          setOpen={setOpen}
+        ></ResponsiveDialogJob>
+      </Container>
     );
   }
   return (
@@ -65,7 +71,7 @@ const JobList = () => {
                 <br />
                 Start Date: {job.startDate}
                 <br />
-                Start Date: {job.endDate}
+                End Date: {job.endDate}
               </Typography>
             </CardContent>
           </Card>

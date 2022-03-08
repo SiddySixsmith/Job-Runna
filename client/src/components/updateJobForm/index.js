@@ -7,13 +7,15 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { TextField, Box } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import { ADD_JOB } from "../../utils/mutations";
+import { UPDATE_JOB } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
 import DatePicker from "../dataPicker";
 import moment from "moment";
 import styles from "../../styles/form.module.css";
 
-const ResponsiveDialogJob = (props) => {
+const UpdateJobForm = (props) => {
+  const { job } = props;
+
   const handleStartDate = (startDateValue) => {
     startDateValue = moment(startDateValue).format("DD/MM/yyyy");
     setFormState({ ...formState, startDate: startDateValue });
@@ -22,23 +24,22 @@ const ResponsiveDialogJob = (props) => {
     endDateValue = moment(endDateValue).format("DD/MM/yyyy");
     setFormState({ ...formState, endDate: endDateValue });
   };
-
   const [formState, setFormState] = useState({
-    siteAddress: "",
-    jobDescription: "",
-    builderName: "",
-    contact: "",
-    contactNumber: "",
-    startDate: "",
-    endDate: "",
-    meterage: "",
+    siteAddress: job.siteAddress,
+    jobDescription: job.jobDescription,
+    builderName: job.builderName,
+    contact: job.contact,
+    contactNumber: job.contactNumber,
+    startDate: job.startDate,
+    endDate: job.endDate,
+    meterage: job.meterage,
   });
-  const [addJob, { error }] = useMutation(ADD_JOB);
+  const [updateJob, { error }] = useMutation(UPDATE_JOB);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await addJob({
+      const { data } = await updateJob({
         variables: {
           siteAddress: formState.siteAddress,
           jobDescription: formState.jobDescription,
@@ -51,8 +52,6 @@ const ResponsiveDialogJob = (props) => {
         },
       });
       setOpen(false);
-
-      window.location.reload();
     } catch (e) {
       console.log(e);
     }
@@ -81,62 +80,62 @@ const ResponsiveDialogJob = (props) => {
       aria-labelledby="responsive-dialog-title"
     >
       <DialogTitle id="responsive-dialog-title" className={styles.header}>
-        {"Add a new job item"}
+        {"Update job item"}
       </DialogTitle>
       <Box component="form" noValidate onSubmit={handleFormSubmit}>
         <DialogContent className={styles.content}>
           <TextField
             variant="standard"
             className={styles.content}
+            placeholder={formState.siteAddress}
             id="siteAddress"
             label="Site Address"
             name="siteAddress"
             autoFocus
-            required
             onChange={handleChange}
           />
 
           <TextField
             variant="standard"
             className={styles.content}
+            placeholder={formState.jobDescription}
             id="jobDescription"
             label="Job Description"
             name="jobDescription"
             autoFocus
-            required
             onChange={handleChange}
           />
 
           <TextField
             variant="standard"
             className={styles.content}
+            placeholder={formState.builderName}
             id="builderName"
             label="Builder"
             name="builderName"
             autoFocus
-            required
             onChange={handleChange}
           />
 
           <TextField
             variant="standard"
             className={styles.content}
+            placeholder={formState.contact}
             id="contact"
             label="Contact"
             name="contact"
             autoFocus
-            required
             onChange={handleChange}
           />
 
           <TextField
             variant="standard"
             className={styles.content}
+            placeholder={formState.contactNumber}
             id="contactNumber"
             label="Contact Number"
             name="contactNumber"
             autoFocus
-            required
             onChange={handleChange}
           />
 
@@ -147,11 +146,11 @@ const ResponsiveDialogJob = (props) => {
           <TextField
             variant="standard"
             className={styles.content}
+            placeholder={formState.meterage}
             id="meterage"
             label="Meterage"
             name="meterage"
             autoFocus
-            required
             onChange={handleChange}
           />
         </DialogContent>
@@ -168,4 +167,4 @@ const ResponsiveDialogJob = (props) => {
   );
 };
 
-export default ResponsiveDialogJob;
+export default UpdateJobForm;

@@ -12,7 +12,7 @@
 }
 
 .card {
-  margin: 5%;
+  margin-top: 50px;
   text-align: start;
   text-align: center;
   border-radius: 20px;
@@ -29,6 +29,7 @@
 .title {
   color: var(--secondary);
 }
+
 .addBtn {
   position: relative;
   background-color: var(--primary);
@@ -54,6 +55,7 @@
 }
 .typgraphy {
   margin: 10px;
+  margin-bottom: 20px;
 }
 .submitBtn {
   background-color: var(--primary);

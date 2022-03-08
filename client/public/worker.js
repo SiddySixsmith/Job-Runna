@@ -1,4 +1,6 @@
+/* eslint-disable no-undef */
 // eslint-disable-next-line no-undef
+// used by prossier PWA
 importScripts("https://progressier.com/client/sw.js?id=yRsm5UICLSzqzoY8TyNy");
 
 /* eslint-disable no-restricted-globals */

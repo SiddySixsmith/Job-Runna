@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -8,27 +9,29 @@ import { TextField, Box } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { useMutation } from "@apollo/client";
-import { ADD_STOCK } from "../../utils/mutations";
+import { UPDATE_STOCK } from "../../utils/mutations";
 import styles from "../../styles/form.module.css";
 
-const ResponsiveDialogStock = (props) => {
+const UpdateStockForm = (props) => {
+  const { stock } = props;
+
   const [formState, setFormState] = useState({
-    name: "",
-    stockType: "",
-    quantity: "",
-    size: "",
-    grit: "",
+    name: stock.name,
+    stockType: stock.stockType,
+    quantity: stock.quantity.toString(),
+    size: stock.size,
+    grit: stock.grit,
   });
-  const [addStock, { error }] = useMutation(ADD_STOCK);
+  const [updateStock, { error }] = useMutation(UPDATE_STOCK);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await addStock({
+      const { data } = await updateStock({
         variables: {
           name: formState.name,
           stockType: formState.stockType,
-          quantity: formState.quantity.toString(),
+          quantity: formState.quantity,
           size: formState.size,
           grit: formState.grit,
         },
@@ -65,7 +68,7 @@ const ResponsiveDialogStock = (props) => {
       aria-labelledby="responsive-dialog-title"
     >
       <DialogTitle id="responsive-dialog-title" className={styles.header}>
-        {"Add new Stock item"}
+        {"Update Stock item"}
       </DialogTitle>
       <Box component="form" noValidate onSubmit={handleFormSubmit}>
         <DialogContent>
@@ -76,11 +79,8 @@ const ResponsiveDialogStock = (props) => {
             label="Name"
             name="name"
             autoFocus
-            required
             onChange={handleChange}
           />
-          <br />
-          <br />
           <TextField
             className={styles.content}
             variant="standard"
@@ -88,11 +88,8 @@ const ResponsiveDialogStock = (props) => {
             label="Stock Type"
             name="stockType"
             autoFocus
-            required
             onChange={handleChange}
           />
-          <br />
-          <br />
           <TextField
             className={styles.content}
             variant="standard"
@@ -101,11 +98,9 @@ const ResponsiveDialogStock = (props) => {
             name="quantity"
             type="number"
             autoFocus
-            required
             onChange={handleChange}
           />
-          <br />
-          <br />
+
           <TextField
             className={styles.content}
             variant="standard"
@@ -113,11 +108,9 @@ const ResponsiveDialogStock = (props) => {
             label="Size"
             name="size"
             autoFocus
-            required
             onChange={handleChange}
           />
-          <br />
-          <br />
+
           <TextField
             className={styles.content}
             variant="standard"
@@ -125,7 +118,6 @@ const ResponsiveDialogStock = (props) => {
             label="Grit"
             name="grit"
             autoFocus
-            required
             onChange={handleChange}
           />
         </DialogContent>
@@ -142,4 +134,4 @@ const ResponsiveDialogStock = (props) => {
   );
 };
 
-export default ResponsiveDialogStock;
+export default UpdateStockForm;

@@ -47,8 +47,18 @@ const resolvers = {
       });
       return stock;
     },
-    updateStockQauntity: async (parent, { _id, quantity }) => {
-      return await Stock.findOneAndUpdate({ _id: _id, quantity: quantity });
+    updateStock: async (
+      parent,
+      { _id, name, stockType, quantity, size, grit }
+    ) => {
+      return await Stock.findOneAndUpdate({
+        _id: _id,
+        name: name,
+        stockType: stockType,
+        quantity: quantity,
+        size: size,
+        grit: grit,
+      });
     },
     deleteStock: async (parent, { _id }) => {
       return Stock.findOneAndDelete({ _id: _id });
@@ -93,7 +103,6 @@ const resolvers = {
         contactNumber,
         startDate,
         endDate,
-        createdAt,
         meterage,
       }
     ) => {
@@ -107,7 +116,6 @@ const resolvers = {
           contactNumber,
           startDate,
           endDate,
-          createdAt,
           meterage,
         },
         { new: true }

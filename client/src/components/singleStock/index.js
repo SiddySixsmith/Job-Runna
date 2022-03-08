@@ -4,7 +4,6 @@ import {
   Typography,
   Card,
   CardContent,
-  CardActions,
   Button,
   Box,
   Dialog,
@@ -19,12 +18,14 @@ import { QUERY_STOCK_BY_ID } from "../../utils/queries";
 import styles from "../../styles/stock.module.css";
 import { DELETE_STOCK } from "../../utils/mutations";
 import { LinkContainer } from "react-router-bootstrap";
+import UpdateStockForm from "../updateStockForm";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const SingleStock = () => {
+  const [openAdd, setOpenADD] = useState(false);
   const [open, setOpen] = useState(false);
   const { _id } = useParams();
 
@@ -32,8 +33,6 @@ const SingleStock = () => {
     variables: { id: _id },
   });
   const stock = data?.getStockById || [];
-
-  const [quantityState, setQuantityState] = useState(stock.quantity);
 
   const [deleteStock, { error }] = useMutation(DELETE_STOCK);
 
@@ -48,13 +47,17 @@ const SingleStock = () => {
     }
   };
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleClickOpenDelete = () => {
+    setOpenADD(true);
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setOpenADD(false);
   };
+  const handleClickOpenUpdate = () => {
+    setOpen(true);
+  };
+
   return (
     <Container className={styles.Container}>
       <h1 className={styles.Header}> {stock.name}</h1>
@@ -71,43 +74,33 @@ const SingleStock = () => {
               >
                 {stock.stockType}
               </Typography>
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">
+              <Typography
+                sx={{ mb: 1.5 }}
+                className={styles.content}
+                color="text.secondary"
+              >
                 {stock.stockType}
               </Typography>
-              <Typography variant="body1" name="quantity">
-                Quantity: {quantityState}
+              <Typography
+                className={styles.content}
+                variant="body1"
+                name="quantity"
+              >
+                Quantity: {stock.quantity}
                 <br />
               </Typography>
-              <Typography variant="body1">
+              <Typography className={styles.content} variant="body1">
                 Size: {stock.size}
                 <br />
               </Typography>
 
-              <Typography variant="body1">Grit: {stock.grit}</Typography>
+              <Typography className={styles.content} variant="body1">
+                Grit: {stock.grit}
+              </Typography>
             </CardContent>
-            <CardActions>
-              <Button
-                type="submit"
-                variant="contained"
-                id="signupSubmit"
-                className={styles.addBtn}
-                onClick={() => setQuantityState(quantityState + 1)}
-              >
-                +
-              </Button>
-              <Button
-                type="submit"
-                variant="contained"
-                id="signupSubmit"
-                className={styles.subtractBtn}
-                onClick={() => setQuantityState(quantityState - 1)}
-              >
-                -
-              </Button>
-            </CardActions>
 
             <Dialog
-              open={open}
+              open={openAdd}
               TransitionComponent={Transition}
               keepMounted
               onClose={handleClose}
@@ -132,7 +125,7 @@ const SingleStock = () => {
           </Card>
 
           <Button
-            onClick={handleClickOpen}
+            onClick={handleClickOpenDelete}
             variant="contained"
             className={styles.submitBtn}
           >
@@ -140,9 +133,19 @@ const SingleStock = () => {
           </Button>
           <br />
           <br />
-          <Button variant="contained" className={styles.submitBtn}>
+          <Button
+            variant="contained"
+            className={styles.submitBtn}
+            onClick={() => setOpen(true)}
+          >
             update
           </Button>
+          <UpdateStockForm
+            stock={stock}
+            open={open}
+            setOpen={setOpen}
+            onClick={handleClickOpenUpdate}
+          ></UpdateStockForm>
         </Box>
       )}
     </Container>

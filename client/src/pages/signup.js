@@ -14,11 +14,11 @@ import {
 } from "@mui/material/";
 import { LinkContainer } from "react-router-bootstrap";
 import logo from "../assets/images/Job-runna-logo.png";
-import styles from "../styles/login.module.css";
+import styles from "../styles/signup.module.css";
 
 const Signup = () => {
   const [errorCode, seterrorCode] = useState(false);
-
+  const [checkAuth, setCheckAuth] = useState(false);
   const [formState, setFormState] = useState({
     firstName: "",
     lastName: "",
@@ -62,8 +62,8 @@ const Signup = () => {
     <Container className={styles.Container}>
       <Box component="form" noValidate onSubmit={handleFormSubmit}>
         <img className={styles.img} src={logo} alt="Logo" />
-        <Stack spacing={3} className={styles.Stack}>
-          <div>
+        <Stack>
+          <div className={styles.inputBox}>
             <label className={styles.label}>First Name</label>
             <br />
             <input
@@ -74,10 +74,8 @@ const Signup = () => {
               required
               onChange={handleChange}
             />
-            <br />
-            <br />
-            <br />
-
+          </div>
+          <div className={styles.inputBox}>
             <label className={styles.label}>Last Name</label>
             <br />
             <input
@@ -88,10 +86,8 @@ const Signup = () => {
               autoFocus
               onChange={handleChange}
             />
-            <br />
-            <br />
-            <br />
-
+          </div>
+          <div className={styles.inputBox}>
             <label className={styles.label}>Email</label>
             <br />
             <input
@@ -102,10 +98,8 @@ const Signup = () => {
               autoFocus
               onChange={handleChange}
             />
-            <br />
-            <br />
-            <br />
-
+          </div>
+          <div className={styles.inputBox}>
             <label className={styles.label}>Password</label>
             <br />
             <input

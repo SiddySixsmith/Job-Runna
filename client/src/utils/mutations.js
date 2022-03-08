@@ -49,7 +49,7 @@ export const ADD_MACHINE = gql`
 // Job
 export const ADD_JOB = gql`
   mutation AddJob(
-    $jobDescription: String!
+    $jobDescription: String
     $siteAddress: String
     $builderName: String
     $contact: String
@@ -85,8 +85,8 @@ export const ADD_JOB = gql`
 `;
 
 export const UPDATE_JOB = gql`
-  mutation Mutation(
-    $jobDescription: String!
+  mutation UpdateJob(
+    $jobDescription: String
     $id: ID
     $siteAddress: String
     $builderName: String
@@ -94,7 +94,6 @@ export const UPDATE_JOB = gql`
     $contactNumber: String
     $startDate: String
     $endDate: String
-    $createdAt: String
     $meterage: String
   ) {
     updateJob(
@@ -106,7 +105,6 @@ export const UPDATE_JOB = gql`
       contactNumber: $contactNumber
       startDate: $startDate
       endDate: $endDate
-      createdAt: $createdAt
       meterage: $meterage
     ) {
       _id
@@ -135,7 +133,7 @@ export const ADD_STOCK = gql`
   mutation AddStock(
     $name: String
     $stockType: String
-    $quantity: Int
+    $quantity: String
     $size: String
     $grit: String
   ) {
@@ -156,8 +154,22 @@ export const ADD_STOCK = gql`
 `;
 
 export const UPDATE_STOCK = gql`
-  mutation Mutation($id: ID, $quantity: Int) {
-    updateStockQauntity(_id: $id, quantity: $quantity) {
+  mutation Mutation(
+    $id: ID
+    $name: String
+    $stockType: String
+    $quantity: String
+    $size: String
+    $grit: String
+  ) {
+    updateStock(
+      _id: $id
+      stockType: $stockType
+      name: $name
+      quantity: $quantity
+      size: $size
+      grit: $grit
+    ) {
       _id
       name
       stockType

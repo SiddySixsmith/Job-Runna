@@ -14,7 +14,7 @@ const stockSchema = new Schema({
     trim: true,
   },
   quantity: {
-    type: Number,
+    type: String,
     required: true,
     trim: true,
   },

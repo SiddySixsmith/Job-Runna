@@ -4,7 +4,7 @@ const typeDefs = gql`
   type Job {
     _id: ID
     siteAddress: String
-    jobDescription: String!
+    jobDescription: String
     builderName: String
     contact: String
     contactNumber: String
@@ -18,7 +18,7 @@ const typeDefs = gql`
     _id: ID
     name: String
     stockType: String
-    quantity: Int
+    quantity: String
     size: String
     grit: String
   }
@@ -65,7 +65,7 @@ const typeDefs = gql`
     addMachine(name: String!, modelNumber: String!): Machine
     addJob(
       siteAddress: String
-      jobDescription: String!
+      jobDescription: String
       builderName: String
       contact: String
       contactNumber: String
@@ -77,24 +77,30 @@ const typeDefs = gql`
     updateJob(
       _id: ID
       siteAddress: String
-      jobDescription: String!
+      jobDescription: String
       builderName: String
       contact: String
       contactNumber: String
       startDate: String
       endDate: String
-      createdAt: String
       meterage: String
     ): Job
     deleteJob(_id: ID): Job
     addStock(
       name: String
       stockType: String
-      quantity: Int
+      quantity: String
       size: String
       grit: String
     ): Stock
-    updateStockQauntity(_id: ID, quantity: Int): Stock
+    updateStock(
+      _id: ID
+      name: String
+      stockType: String
+      quantity: String
+      size: String
+      grit: String
+    ): Stock
     deleteStock(_id: ID): Stock
   }
 `;

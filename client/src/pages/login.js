@@ -57,12 +57,8 @@ function Login() {
     <Container className={styles.Container}>
       <Box component="form" onSubmit={handleFormSubmit} noValidate>
         <img className={styles.img} src={logo} alt="Logo" />
-        <br />
-        <br />
-        <br />
-        <br />
         <Stack>
-          <div>
+          <div className={styles.inputBox}>
             <label label="Email" className={styles.label}>
               Email:
             </label>
@@ -73,10 +69,8 @@ function Login() {
               name="email"
               onChange={handleChange}
             />
-            <br />
-            <br />
-            <br />
-            <br />
+          </div>
+          <div className={styles.inputBox}>
             <label label="Password" className={styles.label}>
               Passwords:
             </label>
@@ -90,9 +84,6 @@ function Login() {
               type={"password"}
               onChange={handleChange}
             />
-            <br />
-            <br />
-            <br />
           </div>
           <Dialog open={errorCode} onClick={handleClose}>
             <Alert severity="error">
@@ -107,8 +98,6 @@ function Login() {
           >
             Login
           </Button>
-          <br />
-          <br />
           <LinkContainer to="/signup">
             <Button variant="contained" className={styles.submitBtn}>
               Dont Have an Account Sign Up!
