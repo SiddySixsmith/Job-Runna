@@ -46,7 +46,7 @@ const JobListHome = () => {
         sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
       >
         {jobs
-          .filter((_, index) => index < -3)
+          .filter((_, index) => index < 3)
           .map((job) => (
             <Link
               key={job._id}
