@@ -14,7 +14,7 @@
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -26,16 +26,13 @@
     -->
     <title>Job Runna</title>
     <!-- used by prossier PWA -->
-    <script
-      defer
-      src="https://progressier.com/client/script.js?id=yRsm5UICLSzqzoY8TyNy"
-    ></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
 
     <div id="root"></div>
-    <script>
+
+    <!-- <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", function () {
           navigator.serviceWorker
@@ -58,7 +55,7 @@
       } else {
         console.log("Service Worker is not supported by browser.");
       }
-    </script>
+    </script> -->
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
