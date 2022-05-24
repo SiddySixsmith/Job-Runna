@@ -1,5 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User, Stock, Machine, Job } = require("../models");
+const { where } = require("../models/job");
 const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
@@ -19,14 +20,9 @@ const resolvers = {
       return await Stock.findById(args._id);
     },
     getStockByQuantity: async (parent, args) => {
-      return await Stock.findMany(args.quantity);
+      return await Stock.find(where(quantity <= "3"));
     },
-    getStockBySize: async (parent, args) => {
-      return await Stock.findMany(args.size);
-    },
-    getStockByGrit: async (parent, args) => {
-      return await Stock.findMany(args.grit);
-    },
+
     // Find Machines
     Machine: async () => {
       return await Machine.find();
