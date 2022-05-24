@@ -19,7 +19,7 @@ const resolvers = {
     getStockById: async (parent, args) => {
       return await Stock.findById(args._id);
     },
-    getStockByQuantity: async (parent, args) => {
+    getStockByQuantity: async () => {
       return await Stock.find(where(quantity <= "3"));
     },
 
