@@ -20,7 +20,7 @@ import SingleStock from "./components/singleStock";
 const httpLink = createHttpLink({
   // production connection
   uri: "https://job-runna.herokuapp.com/graphql",
-  // Development connection
+  // Development connection 
   // uri: "http://localhost:3007/graphql",
 });
 

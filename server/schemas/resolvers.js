@@ -18,7 +18,15 @@ const resolvers = {
     getStockById: async (parent, args) => {
       return await Stock.findById(args._id);
     },
-
+    getStockByQuantity: async (parent, args) => {
+      return await Stock.findOne(args.quantity);
+    },
+    getStockBySize: async (parent, args) => {
+      return await Stock.findOne(args.size);
+    },
+    getStockByGrit: async (parent, args) => {
+      return await Stock.findOne(args.grit);
+    },
     // Find Machines
     Machine: async () => {
       return await Machine.find();
