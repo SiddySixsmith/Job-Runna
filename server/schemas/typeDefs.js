@@ -46,7 +46,7 @@ const typeDefs = gql`
     Job: [Job!]
     getJobById(_id: ID): Job
     Stock: [Stock]
-    getStockByQuantity(): [Stock]
+    getStockByQuantity(quantity: String): [Stock]
     getStockById(_id: ID): Stock
     Machine: [Machine]
     getMachineById(_id: ID): Machine

@@ -19,8 +19,8 @@ const resolvers = {
     getStockById: async (parent, args) => {
       return await Stock.findById(args._id);
     },
-    getStockByQuantity: async () => {
-      return await Stock.find(where(quantity <= "3"));
+    getStockByQuantity: async (parent, args) => {
+      return await Stock.find(args.quantity);
     },
 
     // Find Machines
